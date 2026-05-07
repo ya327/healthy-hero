@@ -282,12 +282,14 @@ function showQuestion() {
     ${showProgress()}
     <p style="font-size:clamp(20px,5vw,26px);font-weight:bold;margin:12px 0">Which is better? 🤔</p>
     <div class="choice-row">
-      <button class="choice-btn" id="choiceBtn0" onclick="choose(0)">${q[0]}</button>
-      <button class="choice-btn" id="choiceBtn1" onclick="choose(1)">${q[1]}</button>
-    </div>
-    <div class="speak-row">
-      <button class="speak-btn" onclick="speakChoice(0)">🔊 A</button>
-      <button class="speak-btn" onclick="speakChoice(1)">🔊 B</button>
+      <div style="display:flex;gap:10px;align-items:center">
+        <button class="speak-btn" onclick="speakChoice(0)" style="flex-shrink:0;width:52px;padding:10px 0">🔊</button>
+        <button class="choice-btn" id="choiceBtn0" onclick="choose(0)" style="flex:1;text-align:left;padding-left:16px"><span style="font-weight:bold;color:#1565c0">A: </span>${q[0]}</button>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center">
+        <button class="speak-btn" onclick="speakChoice(1)" style="flex-shrink:0;width:52px;padding:10px 0">🔊</button>
+        <button class="choice-btn" id="choiceBtn1" onclick="choose(1)" style="flex:1;text-align:left;padding-left:16px"><span style="font-weight:bold;color:#c62828">B: </span>${q[1]}</button>
+      </div>
     </div>
   `;
 
