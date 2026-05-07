@@ -170,6 +170,21 @@ canvas {
 
 <div id="app">
   <h1>Be a Healthy Hero! 🦸‍♀️</h1>
+
+  <!-- スタート画面 -->
+  <div id="startScreen">
+    <div style="font-size:4em;margin:16px 0">🦸‍♀️</div>
+    <p style="font-size:clamp(16px,4vw,20px);color:#555;margin-bottom:8px;line-height:1.7">
+      Which choice is better<br>for your body? 💪
+    </p>
+    <p style="font-size:clamp(13px,3.5vw,16px);color:#aaa;margin-bottom:28px">
+      5もんちょうせんしよう！
+    </p>
+    <button onclick="handleStart()" style="background:linear-gradient(135deg,#66bb6a,#43a047);color:white;border-radius:99px;font-weight:bold;width:100%;box-shadow:0 4px 12px rgba(76,175,80,0.35)">
+      🌟 Start!
+    </button>
+  </div>
+
   <div id="game"></div>
   <div class="result" id="result"></div>
   <button id="nextBtn" class="hidden"></button>
@@ -241,6 +256,11 @@ let score     = 0;
 
 function shuffle(arr) {
   return [...arr].sort(() => Math.random() - 0.5);
+}
+
+function handleStart() {
+  document.getElementById("startScreen").style.display = "none";
+  startGame();
 }
 
 function startGame() {
@@ -422,11 +442,11 @@ function showCongrats() {
   playFanfare();
   const btn = document.getElementById("nextBtn");
   btn.innerText = "Play Again! 🔄";
-  btn.onclick   = startGame;
+  btn.onclick   = startGame; // 2回目以降はタップ済みなので直接OK
   btn.classList.remove("hidden");
 }
 
-startGame();
+// startGame は Start! ボタンから呼ばれる
 </script>
 
 </body>
