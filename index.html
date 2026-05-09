@@ -341,19 +341,22 @@ function choose(index) {
   }, 2000);
 }
 
-// ===== トレース（小文字の単語）=====
-const traceWords = ["apple", "water", "sleep", "clean", "happy", "fruit", "veggie", "health"];
+// ===== トレース（アルファベット1文字）=====
+const traceLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".split("");
 
 function showTrace() {
-  const word = traceWords[Math.floor(Math.random() * traceWords.length)];
+  const letter = traceLetters[Math.floor(Math.random() * traceLetters.length)];
+  const isUpper = letter === letter.toUpperCase();
+  const caseLabel = isUpper ? "uppercase（大文字）" : "lowercase（小文字）";
 
   document.getElementById("game").innerHTML = `
     ${showProgress("trace")}
-    <p style="font-size:28px;font-weight:bold;margin:12px 0">✏️ Trace the word!</p>
-    <p style="font-size:44px;font-weight:bold;color:#2e7d32;letter-spacing:6px;margin:8px 0">${word}</p>
-    <canvas id="canvas" height="120" style="width:100%;max-width:400px"></canvas>
+    <p style="font-size:clamp(20px,5vw,26px);font-weight:bold;margin:12px 0">✏️ Trace the letter!</p>
+    <p style="font-size:clamp(13px,3.5vw,15px);color:#888;margin-bottom:8px">${caseLabel}</p>
+    <p style="font-size:clamp(80px,24vw,120px);font-weight:bold;color:#2e7d32;line-height:1;margin:8px 0">${letter}</p>
+    <canvas id="canvas" height="160" style="width:100%;max-width:400px"></canvas>
     <br>
-    <button onclick="speak('${word}')" style="background:#e3f2fd;margin-top:10px">🔊 Listen</button>
+    <button onclick="speak('${letter}')" style="background:#e3f2fd;margin-top:10px">🔊 Listen</button>
     <button onclick="clearCanvas()" style="background:#fce4ec;margin-top:10px">🗑️ Clear</button>
   `;
 
